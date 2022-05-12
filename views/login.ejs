@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="css/login_register.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp"
+    />
+    <title><%= title %></title>
+  </head>
+  <body id="body">
+    <div id="mask">
+      <img src="" alt="" />
+    </div>
+    <div class="main">
+      <div class="_container">
+        <div class="flexbox">
+          <div class="_mainLogo">
+            <img src="images/khima.png" alt="" srcset="" class="logo-img" />
+          </div>
+          <div class="_loginForm">
+            <div class="title">
+              <h1 class="">로그인</h1>
+            </div>
+            <div class="input-wrapper" id="account-wrapper">
+              <div>
+                <div>
+                  <label for="account-input" class="inputLabel">면허번호</label
+                  ><span class="notification"> </span>
+                </div>
+                <div class="flex">
+                  <div class="icon">
+                    <span class="material-icons-outlined"> lock </span>
+                  </div>
+                  <input
+                    type="text"
+                    name="account"
+                    placeholder="면허번호를 입력해주세요"
+                    id="account-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="input-wrapper" id="name-wrapper">
+              <div>
+                <div>
+                  <label for="name-input" class="inputLabel">성함</label
+                  ><span class="notification"> </span>
+                </div>
+                <div class="flex">
+                  <div class="icon">
+                    <span class="material-icons-outlined">
+                      account_circle
+                    </span>
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="성함을 입력해주세요"
+                    id="name-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="buttonWrapper">
+              <div>
+                <button
+                  id="submitBtn"
+                  class="block w-full mx-auto text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-lg px-3 py-3 font-semibold"
+                >
+                  입장하기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/login.js"></script>
+</html>

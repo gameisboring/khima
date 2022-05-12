@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title><%=title %></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/home2.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script
+      src="https://kit.fontawesome.com/2144746efc.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <div id="mask"></div>
+    <div class="container">
+      <div class="frame">
+        <div class="video-info">
+          <div class="video">
+            <iframe
+              src="https://www.youtube.com/embed/21X5lGlDOfg"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="logo">
+            <img
+              src="https://www.khima.or.kr/img/@img_signature.png"
+              alt="KHIMA 시그니처 로고"
+            />
+            <h1><%=title %></h1>
+          </div>
+        </div>
+
+        <div class="reference">
+          <details open>
+            <summary class="title">출석체크</summary>
+            <div class="group">
+              <div class="title text-center">
+                참석자께서는 교육 참석 여부 확인을 위해 아래
+                <span class="text-red-underline">출석체크 버튼을 클릭</span>하여
+                연결된 웹페이지에서
+                <span class="text-red-underline">출석정보를 제출</span>하여
+                주시기 바랍니다.<br />(<span class="text-red-underline"
+                  >교육 중 1회 시행</span
+                >)
+              </div>
+              <div class="contents">
+                <!-- <a class="content" href='/download?acc=<%=account%>&name=<%=name%>'>
+                <i class="fas fa-link"></i>
+                <div>일정표</div>
+              </a> -->
+                <a class="content" href="https://example.com" target="_blank">
+                  <i class="fas fa-link"></i>
+                  <div>출석체크</div>
+                </a>
+              </div>
+            </div>
+          </details>
+
+          <details open>
+            <summary class="title">질문하기</summary>
+            <div class="question-box">
+              <input type="hidden" value="<%=name %>" />
+              <textarea
+                type="text"
+                placeholder="강의 내용에 관한 질의가 있으신 경우 질문할 메세지를 적고 전송 버튼을 클릭하세요."
+              ></textarea>
+              <div class="contents">
+                <button id="question-submit-button">질문제출</button>
+              </div>
+            </div>
+          </details>
+          <details open>
+            <summary class="title">일정표 - 5월 26일(목)</summary>
+            <div class="group">
+              <div class="time-table">
+                <div class="time-group">등 록</div>
+                <div class="time-form">
+                  <div class="title">등록 (온라인 생중계 접속)</div>
+                  <div class="time">09:00 ~ 09:30</div>
+                </div>
+                <div class="time-group">Tutorial. ICD-11</div>
+                <div class="time-form">
+                  <div class="title">ICD-11 2022 개요</div>
+                  <div class="time">09:30 ~ 10:00</div>
+                  <div class="people">
+                    • 백설경<br />(아주대학교병원 보건의료정보팀 팀장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">ICD-11 2022 개론 및 개발현황</div>
+                  <div class="time">10:00 ~ 11:30</div>
+                  <div class="people">
+                    • 조윤정<br />(중앙대학교병원 의무기록팀 팀장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">ICD-11 구조분석</div>
+                  <div class="time">11:30 ~ 13:00</div>
+                  <div class="people">
+                    • 황규연<br />(부산대학교병원 의료빅데이터팀 차장)
+                  </div>
+                </div>
+                <!-- <div class="time-group">점 심 식 사</div> -->
+                <div class="time-form">
+                  <div class="title">점심식사</div>
+                  <div class="time">13:00 ~ 14:00</div>
+                </div>
+                <div class="time-form">
+                  <div class="title">코딩실습 - Line Coding</div>
+                  <div class="time">14:00 ~ 15:30</div>
+                  <div class="people">
+                    • 김지온<br />
+                    (부산가톨릭대학교 병원경영학과 교수)
+                  </div>
+                </div>
+                <!-- <div class="time-group">커피 브레이크</div> -->
+                <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">15:30 ~ 15:50</div>
+                </div>
+                <div class="time-form">
+                  <div class="title">코딩실습 - Case Coding</div>
+                  <div class="time">15:50 ~ 17:30</div>
+                  <div class="people">
+                    • 최지연<br />
+                    (고려대학교의과대학부속구로병원 의료정보팀 팀장)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details open>
+            <summary class="title">일정표 - 5월 27일(금)</summary>
+            <div class="group">
+              <div class="time-table">
+                <div class="time-group">등 록</div>
+                <div class="time-form">
+                  <div class="title">등록 (온라인 생중계 접속)</div>
+                  <div class="time">09:00 ~ 09:30</div>
+                </div>
+                <div class="time-group">개 회 식</div>
+                <div class="time-form">
+                  <div class="title">개회식 및 시상식</div>
+                  <div class="time">09:30 ~ 10:00</div>
+                </div>
+                <div class="time-group">GENERAL Session</div>
+                <div class="time-form">
+                  <div class="title">데이터산업 동향</div>
+                  <div class="time">10:00 ~ 10:40</div>
+                  <div class="people">
+                    • 이용진<br />(한국지능정보사회진흥원 빅데이터추진단 단장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    헬스케어 빅데이터 생태계 구축을 위한 보건의료 데이터 개방
+                  </div>
+                  <div class="time">10:40 ~ 11:10</div>
+                  <div class="people">
+                    • 김경환<br />(대한심장혈관흉부외과학회 이사장
+                    의료정보리더스포럼 의장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">ICT 업체의 의료사업 방향</div>
+                  <div class="time">11:10 ~ 11:40</div>
+                  <div class="people">
+                    • 유한주<br />(네이버 Healthcare AI 실장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    데이터산업시대의 보건의료데이터관리 전략 및 역할
+                  </div>
+                  <div class="time">11:40 ~ 12:20</div>
+                  <div class="people">
+                    • 임지혜<br />(동아대학교 건강관리학과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">점심식사</div>
+                  <div class="time">12:20 ~ 14:00</div>
+                </div>
+                <div class="time-group">Session 1 : 보건의료정보관리</div>
+                <div class="time-form">
+                  <div class="title">
+                    데이터산업시대에 보건의료정보관리학 학문체계
+                  </div>
+                  <div class="time">14:00 ~ 14:30</div>
+                  <div class="people">
+                    • 박혜진<br />(동덕여자대학교 보건관리학과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">데이터산업시대의 협회의 역할</div>
+                  <div class="time">14:30 ~ 15:00</div>
+                  <div class="people">
+                    • 조윤정<br />(중앙대학교병원 의무기록팀 팀장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">데이터산업시대에 학교의 역할</div>
+                  <div class="time">15:00 ~ 15:30</div>
+                  <div class="people">
+                    • 이정욱<br />(경남대학교 보건의료정보학과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">15:30 ~ 16:00</div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    데이터산업시대 한국보건의료정보관리교육평가원의 역할
+                  </div>
+                  <div class="time">16:00 ~ 16:30</div>
+                  <div class="people">
+                    • 최연희<br />(동의과학대학교 보건행정과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    마이데이터사업에서 보건의료정보관리사의 역할
+                  </div>
+                  <div class="time">16:30 ~ 17:00</div>
+                  <div class="people">
+                    • 서수연<br />(인제대학교 보건행정학과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    보건의료정보관리사의 데이터사업 진출 전략 밎 로드맵
+                  </div>
+                  <div class="time">17:00 ~ 17:30</div>
+                  <div class="people">
+                    • 김선자<br />(서울아산병원 AGS실 부장)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+          <details open>
+            <summary class="title">일정표 - 5월 28일(토)</summary>
+            <div class="group">
+              <div class="time-table">
+                <div class="time-group">등 록</div>
+                <div class="time-form">
+                  <div class="title">등록 (온라인 생중계 접속)</div>
+                  <div class="time">09:00 ~ 09:30</div>
+                </div>
+                <div class="time-group">Session 2 : 암등록 실무</div>
+                <div class="time-form">
+                  <div class="title">2022년 암등록통계사업 소개</div>
+                  <div class="time">09:30 ~ 09:50</div>
+                  <div class="people">
+                    • 정규원<br />(국립암센터 암등록감시부 부장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">암등록에 유용한 임상지식 - 갑상선암</div>
+                  <div class="time">09:50 ~ 10:30</div>
+                  <div class="people">
+                    • 이진욱<br />(인하대학교병원 유방갑상선외과 센터장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">10:30 ~ 10:40</div>
+                </div>
+                <div class="time-form">
+                  <div class="title">암등록에 유용한 임상지식 - 폐암</div>
+                  <div class="time">10:40 ~ 11:20</div>
+                  <div class="people">
+                    • 이정은<br />(충남대학교병원 호흡기내과 부교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">암등록에 유용한 임상지식 - 혈액암</div>
+                  <div class="time">11:20 ~ 12:00</div>
+                  <div class="people">
+                    • 한재준<br />(경희대학교병원 혈액종양내과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">점심식사</div>
+                  <div class="time">12:00 ~ 13:00</div>
+                </div>
+                <div class="time-group">
+                  Session 3 : 중소요양병원의 보건의료정보관리
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    overview of urinary tract infection based on diagnostic
+                    coding
+                  </div>
+                  <div class="time">13:00 ~ 14:20</div>
+                  <div class="people">
+                    • 이신영<br />(서울특별시 서울의료원 비뇨의학과 과장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">14:20 ~ 14:40</div>
+                </div>
+                <div class="time-form">
+                  <div class="title">비뇨기계 감염 질병</div>
+                  <div class="time">14:40 ~ 15:20</div>
+                  <div class="people">
+                    • 오수화<br />(강동경희대학교병원 의료정보관리팀 파트장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">요양병원 코로나19 관련 청구</div>
+                  <div class="time">15:20 ~ 16:00</div>
+                  <div class="people">
+                    • 송미경<br />(참요양병원 심사과 과장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">16:00 ~ 16:20</div>
+                </div>
+                <div class="time-group">Session 4 : 자유연제 및 논문발표</div>
+                <div class="time-form">
+                  <div class="title">
+                    신포괄수가제도가 임상의무기록 관리에 미치는 영향 -
+                    보건의료정보관리사의 인식 중심으로
+                  </div>
+                  <div class="time">16:20 ~ 16:40</div>
+                  <div class="people">
+                    • 이경희<br />(을지대학교 의료경영학과 교수)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    국민건강보험 빅데이터 소개 및 연구 활용 사례
+                  </div>
+                  <div class="time">16:40 ~ 17:10</div>
+                  <div class="people">
+                    • 변경향<br />(국민건강보험공단 빅데이터전략본부
+                    업무혁신지원부 팀장)
+                  </div>
+                </div>
+                <div class="time-form">
+                  <div class="title">
+                    퇴원손상심층조사 담당자 교육과정 운영 사업 - 다빈도 오류
+                    사례 해설
+                  </div>
+                  <div class="time">17:10 ~ 18:00</div>
+                  <div class="people">
+                    • 홍성욱<br />(대한보건의료정보관리사협회 보건의료연구소
+                    책임연구원) • 오수화<br />(강동경희대학교병원 의료정보관리팀
+                    파트장)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/home.js"></script>
+</html>
