@@ -4,23 +4,129 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="/images/icon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="css/spinner.css" />
     <link rel="stylesheet" href="css/login_register.css" />
     <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/images/icon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/images/icon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/images/icon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/images/icon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/images/icon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/images/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/images/icon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/images/icon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/icon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/icon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/icon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/images/icon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/icon/manifest.json" />
+
+    <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Material+Icons%7CMaterial+Icons+Outlined%7CMaterial+Icons+Two+Tone%7CMaterial+Icons+Round%7CMaterial+Icons+Sharp"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <title><%= title %></title>
   </head>
   <body id="body">
-    <div id="mask">
-      <img src="" alt="" />
+    <div
+      id="mask"
+      class=""
+      style="
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        position: absolute;
+        top: 0;
+        opacity: 1;
+        transition: all 0.7s ease-out;
+        background-color: #ffffff;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
     <div class="main">
       <div class="_container">
         <div class="flexbox">
           <div class="_mainLogo">
-            <img src="images/khima.png" alt="" srcset="" class="logo-img" />
+            <img
+              src="images/mainLogo.png"
+              alt="대한보건의료정보관리사협회"
+              class="logo-img"
+            />
           </div>
           <div class="_loginForm">
             <div class="title">
@@ -34,12 +140,12 @@
                 </div>
                 <div class="flex">
                   <div class="icon">
-                    <span class="material-icons-outlined"> lock </span>
+                    <span class="material-symbols-outlined"> badge </span>
                   </div>
                   <input
                     type="text"
                     name="account"
-                    placeholder="면허번호를 입력해주세요"
+                    placeholder="예) 123456"
                     id="account-input"
                   />
                 </div>
@@ -53,14 +159,14 @@
                 </div>
                 <div class="flex">
                   <div class="icon">
-                    <span class="material-icons-outlined">
+                    <span class="material-symbols-outlined">
                       account_circle
                     </span>
                   </div>
                   <input
                     type="text"
                     name="name"
-                    placeholder="성함을 입력해주세요"
+                    placeholder="예) 홍길동"
                     id="name-input"
                   />
                 </div>
@@ -80,7 +186,14 @@
         </div>
       </div>
     </div>
+    <footer>
+      <img src="images/khima-flat.png" alt="대한보건의료정보관리사협회" />
+    </footer>
   </body>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/login.js"></script>
+  <script
+    type="text/javascript"
+    src="https://code.jquery.com/jquery-1.11.3.min.js"
+  ></script>
+  <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/swal.js"></script>
 </html>

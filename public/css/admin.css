@@ -1,0 +1,48 @@
+.heading {
+  background-color: #ebedf9;
+}
+
+#overview {
+  color: #fff;
+}
+
+#views > div {
+  background: #713f98; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #713f98,
+    #8b66ac
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #713f98,
+    #8b66ac
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#reservations > div {
+  background: #16aca9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #16aca9,
+    #2fc5c2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #16aca9,
+    #2fc5c2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#uptime > div {
+  background: #c57d55; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #c57d55,
+    #de966e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #c57d55,
+    #de966e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

@@ -2,69 +2,185 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title><%=title %></title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/home2.css" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="/images/icon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <script
-      src="https://kit.fontawesome.com/2144746efc.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title><%=title %></title>
+    <script></script>
+    <link rel="stylesheet" href="css/spinner.css" />
+    <link rel="stylesheet" href="css/home.fixed.css" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/images/icon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/images/icon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/images/icon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/images/icon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/images/icon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/images/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/images/icon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/images/icon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/icon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/icon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/icon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/images/icon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/images/icon/manifest.json" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body>
-    <div id="mask"></div>
+    <div
+      id="mask"
+      style="
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        position: absolute;
+        top: 0;
+        opacity: 1;
+        transition: all 0.7s ease-out;
+        align-items: center;
+        background-color: #fff;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      <input type="hidden" value="<%=name %>" />
+    </div>
+
     <div class="container">
       <div class="frame">
         <div class="video-info">
-          <div class="video">
+          <div class="video item">
             <iframe
-              src="https://www.youtube.com/embed/21X5lGlDOfg"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              src="https://video.ibm.com/embed/23952599"
+              style="border: 0"
+              webkitallowfullscreen
               allowfullscreen
+              frameborder="no"
+              width="480"
+              height="270"
+              referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <div class="logo">
-            <img
-              src="https://www.khima.or.kr/img/@img_signature.png"
-              alt="KHIMA 시그니처 로고"
-            />
-            <h1><%=title %></h1>
+          <div class="logos item">
+            <img src="/images/mainLogo.png" alt="" />
           </div>
         </div>
 
         <div class="reference">
-          <details open>
-            <summary class="title">출석체크</summary>
+          <!-- <details open> -->
+          <div class="details check">
+            <div class="title cursor-normal">출석체크</div>
             <div class="group">
               <div class="title text-center">
-                참석자께서는 교육 참석 여부 확인을 위해 아래
-                <span class="text-red-underline">출석체크 버튼을 클릭</span>하여
-                연결된 웹페이지에서
-                <span class="text-red-underline">출석정보를 제출</span>하여
-                주시기 바랍니다.<br />(<span class="text-red-underline"
-                  >교육 중 1회 시행</span
-                >)
+                참석자께서는
+                <span class="text-red-underline">교육 이수시간 확인</span>을
+                위해
+                <span class="text-red-underline"
+                  >[입장/퇴장 체크] 버튼을 클릭</span
+                >하여 연결된 웹페이지에서 입·퇴장정보를 제출해주시기 바랍니다.
+                (<span class="text-red-underline"
+                  >최초 입장 시 1회 + 최종 퇴장 시 1회 = </span
+                ><span class="text-blue-underline">총 2회 </span
+                ><span class="text-red-underline">필수</span>)
               </div>
               <div class="contents">
                 <!-- <a class="content" href='/download?acc=<%=account%>&name=<%=name%>'>
                 <i class="fas fa-link"></i>
                 <div>일정표</div>
               </a> -->
-                <a class="content" href="https://example.com" target="_blank">
-                  <i class="fas fa-link"></i>
-                  <div>출석체크</div>
+                <a
+                  class="content"
+                  href="https://forms.gle/z6SAGSTZvJ4p6B6a9"
+                  target="_blank"
+                >
+                  <span class="material-symbols-outlined"> task_alt </span>
+                  <div>입장/퇴장 체크</div>
                 </a>
               </div>
             </div>
-          </details>
+          </div>
+          <!-- </details> -->
 
-          <details open>
+          <!-- <details open>
             <summary class="title">질문하기</summary>
             <div class="question-box">
               <input type="hidden" value="<%=name %>" />
@@ -76,9 +192,13 @@
                 <button id="question-submit-button">질문제출</button>
               </div>
             </div>
-          </details>
-          <details open>
-            <summary class="title">일정표 - 5월 26일(목)</summary>
+          </details> -->
+          <details open class="details thursday">
+            <summary class="title">
+              5월 26일(목) <br /><span class="text-yellow"
+                >Tutorial. ICD-11</span
+              >
+            </summary>
             <div class="group">
               <div class="time-table">
                 <div class="time-group">등 록</div>
@@ -88,7 +208,7 @@
                 </div>
                 <div class="time-group">Tutorial. ICD-11</div>
                 <div class="time-form">
-                  <div class="title">ICD-11 2022 개요</div>
+                  <div class="title">ICD-11 2022 개요 및 이행 준비</div>
                   <div class="time">09:30 ~ 10:00</div>
                   <div class="people">
                     • 백설경<br />(아주대학교병원 보건의료정보팀 팀장)
@@ -96,14 +216,18 @@
                 </div>
                 <div class="time-form">
                   <div class="title">ICD-11 2022 개론 및 개발현황</div>
-                  <div class="time">10:00 ~ 11:30</div>
+                  <div class="time">10:00 ~ 11:20</div>
                   <div class="people">
                     • 조윤정<br />(중앙대학교병원 의무기록팀 팀장)
                   </div>
                 </div>
                 <div class="time-form">
+                  <div class="title">커피브레이크</div>
+                  <div class="time">11:20 ~ 11:40</div>
+                </div>
+                <div class="time-form">
                   <div class="title">ICD-11 구조분석</div>
-                  <div class="time">11:30 ~ 13:00</div>
+                  <div class="time">11:40 ~ 13:00</div>
                   <div class="people">
                     • 황규연<br />(부산대학교병원 의료빅데이터팀 차장)
                   </div>
@@ -114,7 +238,10 @@
                   <div class="time">13:00 ~ 14:00</div>
                 </div>
                 <div class="time-form">
-                  <div class="title">코딩실습 - Line Coding</div>
+                  <div class="title">
+                    International Classification of Disease 11th Coding Case -
+                    Part 1
+                  </div>
                   <div class="time">14:00 ~ 15:30</div>
                   <div class="people">
                     • 김지온<br />
@@ -127,7 +254,10 @@
                   <div class="time">15:30 ~ 15:50</div>
                 </div>
                 <div class="time-form">
-                  <div class="title">코딩실습 - Case Coding</div>
+                  <div class="title">
+                    International Classification of Disease 11th Coding Case -
+                    Part 2
+                  </div>
                   <div class="time">15:50 ~ 17:30</div>
                   <div class="people">
                     • 최지연<br />
@@ -137,8 +267,11 @@
               </div>
             </div>
           </details>
-          <details open>
-            <summary class="title">일정표 - 5월 27일(금)</summary>
+          <details open class="details friday">
+            <summary class="title">
+              5월 27일(금)<br />
+              <span class="text-yellow">GENERAL Session + Session 1</span>
+            </summary>
             <div class="group">
               <div class="time-table">
                 <div class="time-group">등 록</div>
@@ -153,16 +286,15 @@
                 </div>
                 <div class="time-group">GENERAL Session</div>
                 <div class="time-form">
-                  <div class="title">데이터산업 동향</div>
+                  <div class="title">데이터 산업 동향 및 정책 현황</div>
                   <div class="time">10:00 ~ 10:40</div>
                   <div class="people">
-                    • 이용진<br />(한국지능정보사회진흥원 빅데이터추진단 단장)
+                    • 이용진<br />(한국지능정보사회진흥원(NIA) 빅데이터추진단
+                    단장)
                   </div>
                 </div>
                 <div class="time-form">
-                  <div class="title">
-                    헬스케어 빅데이터 생태계 구축을 위한 보건의료 데이터 개방
-                  </div>
+                  <div class="title">보건의료데이터의 바람직한 활용 방안</div>
                   <div class="time">10:40 ~ 11:10</div>
                   <div class="people">
                     • 김경환<br />(대한심장혈관흉부외과학회 이사장
@@ -200,7 +332,7 @@
                   </div>
                 </div>
                 <div class="time-form">
-                  <div class="title">데이터산업시대의 협회의 역할</div>
+                  <div class="title">보건의료데이터산업시대의 협회의 역할</div>
                   <div class="time">14:30 ~ 15:00</div>
                   <div class="people">
                     • 조윤정<br />(중앙대학교병원 의무기록팀 팀장)
@@ -247,8 +379,11 @@
               </div>
             </div>
           </details>
-          <details open>
-            <summary class="title">일정표 - 5월 28일(토)</summary>
+          <details open class="details saturday">
+            <summary class="title">
+              5월 28일(토)<br />
+              <span class="text-yellow">Session 2 + 3 + 4</span>
+            </summary>
             <div class="group">
               <div class="time-table">
                 <div class="time-group">등 록</div>
@@ -258,7 +393,7 @@
                 </div>
                 <div class="time-group">Session 2 : 암등록 실무</div>
                 <div class="time-form">
-                  <div class="title">2022년 암등록통계사업 소개</div>
+                  <div class="title">2022년 국가암등록통계사업</div>
                   <div class="time">09:30 ~ 09:50</div>
                   <div class="people">
                     • 정규원<br />(국립암센터 암등록감시부 부장)
@@ -276,7 +411,7 @@
                   <div class="time">10:30 ~ 10:40</div>
                 </div>
                 <div class="time-form">
-                  <div class="title">암등록에 유용한 임상지식 - 폐암</div>
+                  <div class="title">암등록에 유용한 임상지식 - 폐암 내과</div>
                   <div class="time">10:40 ~ 11:20</div>
                   <div class="people">
                     • 이정은<br />(충남대학교병원 호흡기내과 부교수)
@@ -311,7 +446,7 @@
                   <div class="time">14:20 ~ 14:40</div>
                 </div>
                 <div class="time-form">
-                  <div class="title">비뇨기계 감염 질병</div>
+                  <div class="title">신포괄 비뇨기계 감염 진단코딩</div>
                   <div class="time">14:40 ~ 15:20</div>
                   <div class="people">
                     • 오수화<br />(강동경희대학교병원 의료정보관리팀 파트장)
@@ -340,25 +475,36 @@
                   </div>
                 </div>
                 <div class="time-form">
-                  <div class="title">
-                    국민건강보험 빅데이터 소개 및 연구 활용 사례
-                  </div>
+                  <div class="title">국민건강보험 빅데이터 소개 및 활용</div>
                   <div class="time">16:40 ~ 17:10</div>
                   <div class="people">
                     • 변경향<br />(국민건강보험공단 빅데이터전략본부
                     업무혁신지원부 팀장)
                   </div>
                 </div>
-                <div class="time-form">
+                <div class="time-form" style="grid-template-rows: 1fr">
                   <div class="title">
-                    퇴원손상심층조사 담당자 교육과정 운영 사업 - 다빈도 오류
-                    사례 해설
+                    2022년 퇴원손상심층조사 담당자 교육과정 운영 및 질 관리 지원
                   </div>
-                  <div class="time">17:10 ~ 18:00</div>
+                  <div
+                    class="time"
+                    style="
+                      grid-row: 1 / span 4;
+                      grid-column: 2 / 2;
+                      align-self: center;
+                    "
+                  >
+                    <div class="time">17:10 ~ 18:00</div>
+                  </div>
+                  <div class="people" style="margin-bottom: 1rem">
+                    • 홍성옥<br />(대한보건의료정보관리사협회 보건의료연구소
+                    책임연구원)
+                  </div>
+                  <div class="title">
+                    퇴원손상심층조사 담당자 교육 다빈도 오류 사례 지침 해설
+                  </div>
                   <div class="people">
-                    • 홍성욱<br />(대한보건의료정보관리사협회 보건의료연구소
-                    책임연구원) • 오수화<br />(강동경희대학교병원 의료정보관리팀
-                    파트장)
+                    • 오수화<br />(강동경희대학교병원 의료정보관리팀 파트장)
                   </div>
                 </div>
               </div>
@@ -368,5 +514,6 @@
       </div>
     </div>
   </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/home.js"></script>
 </html>

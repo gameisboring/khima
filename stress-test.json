@@ -1,0 +1,50 @@
+{
+  "config": {
+    "target": "http://nstream.kr",
+    "phases": [
+      {
+        "duration": 60,
+        "arrivalRate": 30
+      }
+    ],
+    "default": {
+      "headers": {
+        "User-Agent": "Artillery-Test"
+      }
+    }
+  },
+  "scenarios": [
+    {
+      "flow": [
+        {
+          "get": {
+            "url": "/"
+          }
+        },
+        {
+          "post": {
+            "url": "/login",
+            "json": {
+              "account": "123456",
+              "name": "테스트"
+            }
+          }
+        },
+        {
+          "get": {
+            "url": "/home?acc=123456"
+          }
+        },
+        {
+          "post": {
+            "url": "/home",
+            "json": {
+              "acc": "123456",
+              "name": "테스트"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

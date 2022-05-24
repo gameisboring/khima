@@ -1,7 +1,10 @@
 var express = require('express')
 var router = express.Router()
-const { logReqInfo } = require('../lib/winston')
+const { logger, logReqInfo } = require('../lib/winston')
 var pool = require('../lib/db')
+const xlsx = require('xlsx')
+const fs = require('fs')
+const path = require('path')
 
 // 관리자 화면
 router.get('/', async function (req, res, next) {
@@ -35,7 +38,7 @@ router.get('/', async function (req, res, next) {
 router.get('/book', async function (req, res, next) {
   logReqInfo(req)
   try {
-    const sql = 'SELECT * FROM `nfun`.`USERS`;'
+    const sql = 'SELECT * FROM nfun.`시청자 분석 로그`;'
     const [rows, fields] = await pool.query(sql)
     rows.ok = true
     res.json(rows)
@@ -48,25 +51,37 @@ router.get('/book', async function (req, res, next) {
 // 관리자 유저 리스트 다운로드
 router.get('/book/download', async function (req, res, next) {
   logReqInfo(req)
+
   try {
-    const sql =
-      'SELECT NAME 이름, ACCOUNT 등록번호 FROM `nfun`.`USERS` WHERE ROLE = "V";'
+    const sql = 'SELECT * FROM nfun.`시청자 분석 로그2`;'
 
     const [rows, fields] = await pool.query(sql)
-    const csvFromRowsObject2 = xlsx.utils.json_to_sheet(rows)
-    const stream = xlsx.stream.to_csv(csvFromRowsObject2)
 
-    const fileName =
-      __dirname +
-      '/public/download/' +
-      process.env.MAINPAGE_TITLE +
-      '_참가자리스트.csv'
+    const fileServe = new Promise((res, rej) => {
+      if (rows) {
+        const csvFromRowsObject = xlsx.utils.json_to_sheet(rows)
+        const stream = xlsx.stream.to_csv(csvFromRowsObject)
+        const filePath = path.join(__dirname, '../public/download/')
+        const fileName = process.env.MAINPAGE_TITLE + '_시청자분석로그.csv'
+        stream.pipe(fs.createWriteStream(filePath + fileName))
+        res(filePath + fileName)
+      }
+    })
 
-    stream.pipe(fs.createWriteStream(fileName))
-
-    res.download(fileName)
+    fileServe.then((fileName) => {
+      res.download(
+        fileName,
+        process.env.MAINPAGE_TITLE + '_시청자분석로그.csv',
+        function (err) {
+          if (err) {
+            console.log(err)
+            res.json(err)
+          }
+        }
+      )
+    })
   } catch (error) {
-    logger.error('유저 목록 조회 실패')
+    logger.error('시청자 로그 조회 실패')
     console.log(error)
   }
 })
@@ -112,6 +127,9 @@ router.get('/question/download', async function (req, res, next) {
     })
 
     fileServe.then((fileName) => {
+      console.log(fileName)
+      res.status(200)
+      res.setHeader('Content-Disposition', `attachment; filename=${fileName}`)
       res.sendFile(fileName)
     })
   } catch (error) {
@@ -125,13 +143,26 @@ router.get('/info', async function (req, res, next) {
   logReqInfo(req)
 
   try {
-    const sql =
-      'SELECT (SELECT COUNT(*) FROM NFUN.LOGS) HITS , (SELECT COUNT(*) FROM NFUN.USERS) USERS, (SELECT COUNT(*) FROM NFUN.QUESTION) QUESTIONS, START FROM NFUN.CONFIG;'
+    const sql = 'SELECT * FROM nfun.`어드민페이지 정보`;'
     const [rows, fields] = await pool.query(sql)
     rows.ok = true
     res.json(rows).status(200)
   } catch (error) {
-    logger.error('관리자 정보 목록 조회 실패')
+    logger.error('어드민 정보 조회 실패')
+    console.log(error)
+  }
+})
+
+// 참가자 목록 차트 쿼리
+router.get('/chart', async function (req, res, next) {
+  logReqInfo(req)
+  try {
+    const sql = `SELECT * FROM nfun.시청자차트;`
+    const [rows, fields] = await pool.query(sql)
+    rows.ok = true
+    res.json(rows).status(200)
+  } catch (error) {
+    logger.error('참가자 목록 정보 조회 실패')
     console.log(error)
   }
 })
