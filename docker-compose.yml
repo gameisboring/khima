@@ -29,3 +29,5 @@ services:
       - --lower_case_table_names=1
     ports:
       - 3306:3306
+    cap_add:
+      - SYS_NICE

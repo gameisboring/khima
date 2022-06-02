@@ -17,30 +17,29 @@
     {
       "flow": [
         {
-          "get": {
-            "url": "/"
-          }
-        },
-        {
           "post": {
-            "url": "/login",
+            "url": "/home",
             "json": {
-              "account": "123456",
-              "name": "테스트"
+              "acc": "1111111",
+              "name": "테스트1"
             }
-          }
-        },
-        {
-          "get": {
-            "url": "/home?acc=123456"
           }
         },
         {
           "post": {
             "url": "/home",
             "json": {
-              "acc": "123456",
-              "name": "테스트"
+              "acc": "2222222",
+              "name": "테스트2"
+            }
+          }
+        },
+        {
+          "post": {
+            "url": "/home",
+            "json": {
+              "acc": "3333333",
+              "name": "테스트3"
             }
           }
         }

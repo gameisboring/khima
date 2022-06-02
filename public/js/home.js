@@ -77,7 +77,7 @@ setInterval(function () {
   }).fail(function () {
     console.log('ping fail')
   })
-}, 1000 * 60)
+}, 1000 * 1)
 
 class Accordion {
   constructor(el) {

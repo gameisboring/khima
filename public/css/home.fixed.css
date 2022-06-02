@@ -57,15 +57,15 @@ body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 0.5rem 20vw;
-  grid-template-columns: 1fr 22vw;
+  grid-template-columns: 71vw 24vw;
   height: 92vh;
   width: 95vw;
   gap: 0.5rem;
-  overflow: hidden;
   min-height: 500px;
 }
+
 .container > .frame > .video-info {
-  overflow: hidden;
+  /* overflow: hidden; */
   display: grid;
   grid-template-rows: 1fr minmax(13.5vh, auto);
   grid-template-columns: 1fr;

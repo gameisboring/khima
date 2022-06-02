@@ -108,6 +108,7 @@ function setUptime() {
   t < 0
     ? $('#start-time').text(`D - ${e}일 ${s}시간 ${n}분 ${i}초`)
     : $('#start-time').text(`${e}일 ${s}시간 ${n}분 ${i}초`)
+  console.log(Math.abs(Math.floor(t / 864e5)))
 }
 
 function getFullYmdStr(t) {

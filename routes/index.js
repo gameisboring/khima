@@ -26,10 +26,13 @@ router.post('/login', async (req, res, next) => {
   const { account, name } = req.body
   logReqInfo(req, account, name)
   try {
-    const sql = 'SELECT * FROM `nfun`.`USERS` WHERE ACCOUNT = ? AND NAME = ?;'
+    const sql = `SELECT * FROM nfun.USERS WHERE ACCOUNT = ? AND NAME = ? ORDER BY DATE DESC;`
     const [rows, fields] = await pool.query(sql, [account, name])
+
     if (rows.length === 0) {
-      logger.error(`로그인 실패 | 등록번호 : ${account} | 이름 : ${name}`)
+      logger.error(
+        `로그인 실패 (입력정보 틀림) | 등록번호 : ${account} | 이름 : ${name}`
+      )
       res.json({ ok: false })
       return
     }
@@ -43,16 +46,24 @@ router.post('/login', async (req, res, next) => {
     const userDate = new Date(rows[0].DATE).getDay()
     const now = new Date().getDay()
 
+    console.log(userDate + ' : ' + now)
+
     if (userDate === now) {
       res.status(200).json({ ok: true, date: true })
+      logger.info(
+        `로그인 성공 | 등록번호 : ${account} | 이름 : ${name} | 직책 : ${
+          rows[0].ROLE === 'A' ? '관리자' : '시청자'
+        }`
+      )
     } else {
+      logger.error(
+        `로그인 실패 (신청일자 다름) | 등록번호 : ${account} | 이름 : ${name} | 직책 : ${
+          rows[0].ROLE === 'A' ? '관리자' : '시청자'
+        }`
+      )
       res.status(200).json({ ok: true, date: false })
     }
-    logger.info(
-      `로그인 성공 | 등록번호 : ${account} | 이름 : ${name} | 직책 : ${
-        rows[0].ROLE === 'A' ? '관리자' : '시청자'
-      }`
-    )
+
     return
   } catch (error) {
     logger.error(
@@ -69,19 +80,18 @@ router.get('/home', async function (req, res) {
   if (account) {
     try {
       const [rows, fields] = await pool.query(
-        `SELECT NAME FROM nfun.USERS WHERE ACCOUNT = ? AND DATE_FORMAT(DATE,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d') OR ROLE = 'A' OR ACCOUNT = '123456';`,
+        `SELECT NAME FROM nfun.USERS WHERE ACCOUNT = ? AND DATE_FORMAT(DATE,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d');`,
         [account]
       )
       if (rows.length > 0) {
         const name = rows[0].NAME
         const agent = req.header('User-Agent')
         const url = req.method + ' ' + req.url
-        const sql = `INSERT INTO NFUN.LOGS(LOGS_ACCOUNT,LOGS_NAME,USER_AGENT,URL,ACCESS_TIME) values (?,?,?,?,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'));`
+        const sql = `INSERT INTO NFUN.LOGS(LOGS_ACCOUNT,LOGS_NAME,URL,ACCESS_TIME) values (?,?,?,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'));`
         try {
           const [INSERT_rows, INSERT_fields] = await pool.query(sql, [
             account,
             name,
-            agent,
             url,
           ])
           logReqInfo(req, account, name)
@@ -114,13 +124,16 @@ router.post('/home', async (req, res) => {
   const { acc, name } = req.body
   try {
     logReqInfo(req, acc, name)
-    const agent = req.header('User-Agent')
+    /* const agent = req.header('User-Agent')
     const url = req.method + ' ' + req.url
     await pool.query(
-      `INSERT INTO NFUN.LOGS(LOGS_ACCOUNT,LOGS_NAME,USER_AGENT,URL,ACCESS_TIME) values (?,?,?,?,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'));`,
-      [acc, name, agent, url]
-    )
-    res.json({ ok: true })
+      `INSERT INTO NFUN.LOGS(LOGS_ACCOUNT,LOGS_NAME,URL,ACCESS_TIME) values (?,?,?,DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'));`,
+      [acc, name, url]
+    ) */
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
+    res.write("<script> alert('행사가 종료되었습니다.'); ")
+    res.write('window.location="/" </script>')
+    res.end()
   } catch (error) {
     logError(req, acc, name, error)
   }
